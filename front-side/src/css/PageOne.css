@@ -1,0 +1,9 @@
+.drag-box {
+    position: absolute;
+    z-index: 9;
+    width: 4rem;
+    text-align: center;
+    border: solid 1px cadetblue;
+    font-weight: bold;
+    cursor: move;
+}
