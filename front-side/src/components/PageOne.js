@@ -17,16 +17,23 @@ const PageOne = () => {
         let yPosition = e.clientY;
 
         const handleDragging = e => {
-            const xPositionOffset = xPosition - e.clientX;
-            const yPositionOffset = yPosition - e.clientY;
+            let wait = false;
 
-            // 이동
-            ref.style.left = ref.offsetLeft - xPositionOffset + "px";
-            ref.style.top = ref.offsetTop - yPositionOffset + "px";
+            if (!wait) {
+                const xPositionOffset = xPosition - e.clientX;
+                const yPositionOffset = yPosition - e.clientY;
 
-            // 위치값 변경
-            xPosition = e.clientX;
-            yPosition = e.clientY;
+                // 이동
+                ref.style.left = ref.offsetLeft - xPositionOffset + "px";
+                ref.style.top = ref.offsetTop - yPositionOffset + "px";
+
+                // 위치값 변경
+                xPosition = e.clientX;
+                yPosition = e.clientY;
+
+                wait = true;
+                setTimeout(function(){ wait = false; },200);
+            }
         };
 
         const handleDragEnd = e => {
